@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --inspect ./src/index.js --port 3000"
+    "start": "nodemon --inspect ./src/index.js"
   },
   "keywords": [],
   "author": "",

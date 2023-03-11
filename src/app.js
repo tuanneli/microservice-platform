@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 })
 app.use('/', router)
 
-module.exports = ({port}) => {
+module.exports = ({ port }) => {
     app.listen(port, () => console.log(`Port - ${port}`))
 }
 
