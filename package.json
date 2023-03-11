@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect ./src/index.js --open-browser"
+    "start": "nodemon --inspect ./src/index.js --mode development"
   },
   "keywords": [],
   "author": "",
