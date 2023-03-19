@@ -1,4 +1,6 @@
 const path = require('path')
+const rules = require('./rules')
+const plugins = require('./plugins')
 const getProjectPackage = require('../utils/get-project-package')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -6,8 +8,6 @@ const isDev = process.env.NODE_ENV === 'development'
 const fileName = (ext) => isDev ? `index.${ext}` : `index.[hash].${ext}`
 
 const pkg = getProjectPackage()
-
-console.log(1, pkg?.name)
 
 module.exports = {
     // entry: [path.resolve(process.env.ENTRY)],
@@ -26,4 +26,5 @@ module.exports = {
     module: {
         rules
     },
+    plugins
 }

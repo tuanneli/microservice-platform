@@ -7,8 +7,13 @@ const styleLoader = {
 
 const cssLoader = {
     loader: 'css-loader',
-    esModule: true,
-    import: false,
+    modules: {
+        mode: 'local',
+        localIdentName: process.env.NODE_ENV === 'development'
+            ? '[local]' : '[hash:base64:8]',
+        exportGlobals: true,
+        exportOnlyLocals: false
+    }
 }
 
 module.exports = [
@@ -25,5 +30,13 @@ module.exports = [
             styleLoader,
             cssLoader,
         ]
+    },
+    {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader',
+    },
+    {
+        tets: /\.(?:jpg|png|gif)$/,
+        loader: 'file-loader'
     }
 ]
