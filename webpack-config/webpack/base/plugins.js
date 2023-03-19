@@ -3,6 +3,7 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const CWD = process.cwd()
 const LOCALES_PATH = path.resolve(CWD, 'locales')
@@ -22,13 +23,13 @@ checkAssetsAndLocalesExistence(LOCALES_PATH, 'locales', patterns)
 const plugins = []
 
 
-if(patterns?.length) {
-  plugins.push(
-    new CopyWebpackPlugin({
-      patterns
-    })
-  )
-}
+// if(patterns?.length) {
+//   plugins.push(
+//     new CopyWebpackPlugin({
+//       patterns
+//     })
+//   )
+// }
 
 // plugins.push(
 //   new ForkTsCheckerWebpackPlugin({
@@ -44,14 +45,20 @@ if(patterns?.length) {
 //   })
 // )
 
-if(process.env.VIZUALIZER) {
-  plugins.push(
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      defaultSizes: 'stat',
-      openAnalyzer: false
-    })
-  )
-}
+// if(process.env.VIZUALIZER) {
+//   plugins.push(
+//     new BundleAnalyzerPlugin({
+//       analyzerMode: 'static',
+//       defaultSizes: 'stat',
+//       openAnalyzer: false
+//     })
+//   )
+// }
+
+plugins.push(
+  new HtmlWebpackPlugin({
+    template: path.join(__dirname, '../../../index.html'),
+  })
+)
 
 module.exports = plugins

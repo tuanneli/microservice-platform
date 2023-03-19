@@ -11,13 +11,12 @@ const pkg = getProjectPackage()
 
 module.exports = {
     // entry: [path.resolve(process.env.ENTRY)],
-    entry: [path.resolve('./index.js')],
-    context: process.cwd(),
+    entry: './index.js',
+    // context: process.cwd(),
     mode: process.env.NODE_ENV,
     output: {
         path: path.resolve(process.cwd(), !isDev ? 'target' : 'target-dev'),
-        filename: fileName('js'),
-        publicPath: `${pkg?.name}${process.env.VERSION}`
+        filename: fileName('js')
     },
     resolve: {
         extensions: ['.jsx', '.js', '.tsx', '.ts', '.json'],
