@@ -22,7 +22,7 @@ checkAssetsAndLocalesExistence(LOCALES_PATH, 'locales', patterns)
 const plugins = []
 
 
-if(patterns) {
+if(patterns?.length) {
   plugins.push(
     new CopyWebpackPlugin({
       patterns
@@ -30,26 +30,28 @@ if(patterns) {
   )
 }
 
-plugins.push(
-  new ForkTsCheckerWebpackPlugin({
-    typescript: {
-      context: CWD,
-      diagnosticOptions: {
-        semantic: true,
-        syntactic: true,
-        declaration: true
-      },
-      mode: 'write-references'
-    }
-  })
-)
+// plugins.push(
+//   new ForkTsCheckerWebpackPlugin({
+//     typescript: {
+//       context: CWD,
+//       diagnosticOptions: {
+//         semantic: true,
+//         syntactic: true,
+//         declaration: true
+//       },
+//       mode: 'write-references'
+//     }
+//   })
+// )
 
-plugins.push(
-  new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-    defaultSizes: 'stat',
-    openAnalyzer: false
-  })
-)
+if(process.env.VIZUALIZER) {
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      defaultSizes: 'stat',
+      openAnalyzer: false
+    })
+  )
+}
 
 module.exports = plugins

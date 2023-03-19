@@ -4,7 +4,9 @@
   "description": "",
   "main": "./dev-server/src/index.js",
   "scripts": {
-    "start": "nodemon --inspect ./dev-server/src/index.js --mode development"
+    "start": "nodemon --inspect ./dev-server/src/index.js --mode development",
+    "dev": "cross-env NODE_ENV=development VIZUALIZER=true nodemon --inspect ./dev-server/src/index.js",
+    "prod": "cross-env NODE_ENV=production VIZUALIZER=false nodemon --inspect ./dev-server/src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "commander": "10.0.0",
     "copy-webpack-plugin": "11.0.0",
     "cors": "2.8.5",
+    "cross-env": "^7.0.3",
     "css-loader": "6.7.3",
     "express": "4.18.2",
     "file-loader": "6.2.0",

@@ -7,12 +7,14 @@ const styleLoader = {
 
 const cssLoader = {
     loader: 'css-loader',
-    modules: {
-        mode: 'local',
-        localIdentName: process.env.NODE_ENV === 'development'
-            ? '[local]' : '[hash:base64:8]',
-        exportGlobals: true,
-        exportOnlyLocals: false
+    options: {
+        modules: {
+            mode: 'local',
+            localIdentName: process.env.NODE_ENV === 'development'
+                ? '[local]' : '[hash:base64:8]',
+            exportGlobals: true,
+            exportOnlyLocals: false
+        }
     }
 }
 
@@ -36,7 +38,7 @@ module.exports = [
         loader: 'svg-inline-loader',
     },
     {
-        tets: /\.(?:jpg|png|gif)$/,
+        test: /\.(?:jpg|png|gif)$/,
         loader: 'file-loader'
     }
 ]
