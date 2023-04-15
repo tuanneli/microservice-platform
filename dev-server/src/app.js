@@ -10,6 +10,8 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackConfigPath = path.resolve(__dirname, '..', '..', 'webpack-config')
 const webpackConfig = require(path.resolve(webpackConfigPath))
 const compiler = webpack(webpackConfig);
+console.log(path.resolve(__dirname))
+const pathHbs = path.resolve(__dirname, '..', '..', 'presentation-layer')
 
 const app = express()
 
@@ -19,12 +21,14 @@ app.use(
     })
 )
 
+require(path.resolve(pathHbs)).applyHbs(app, {message: {}, logger: console})
+
 // router.get('/', (req, res) => {
 //     res.send('Hello')
 // })
 // app.use('/', router)
 
-module.exports = ({ port, openBrowser }) => {
+module.exports = ({port, openBrowser}) => {
     app.listen(port, () => {
         if (openBrowser) {
             open(`http://localhost:${port}`)
