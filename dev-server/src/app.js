@@ -36,4 +36,3 @@ module.exports = ({port, openBrowser}) => {
         console.log(`Port - ${port}`)
     })
 }
-

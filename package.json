@@ -2,7 +2,7 @@
   "name": "microservice-platform",
   "version": "1.0.0",
   "description": "",
-  "main": "./dev-server/src/index.js",
+  "main": "./index.js",
   "scripts": {
     "start": "nodemon --inspect ./dev-server/src/index.js --mode development",
     "dev": "cross-env NODE_ENV=development VIZUALIZER=true nodemon --inspect ./dev-server/src/index.js",

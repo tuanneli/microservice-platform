@@ -10,7 +10,7 @@ const fileName = (ext) => isDev ? `index.${ext}` : `index.[hash].${ext}`
 const pkg = getProjectPackage()
 
 module.exports = {
-    // entry: [path.resolve(process.env.ENTRY)],
+    entry: [path.resolve(process.env.ENTRY)],
     // entry: [path.resolve('./index.js')],
     context: process.cwd(),
     mode: process.env.NODE_ENV,
