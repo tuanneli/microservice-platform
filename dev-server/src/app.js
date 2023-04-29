@@ -15,20 +15,22 @@ const pathHbs = path.resolve(__dirname, '..', '..', 'presentation-layer')
 
 const app = express()
 
-app.use(
-    webpackDevMiddleware(compiler, {
-        // webpack-dev-middleware options
-    })
-)
+// app.use(
+//     webpackDevMiddleware(compiler, {
+//         // webpack-dev-middleware options
+//     })
+// )
 
 require(path.resolve(pathHbs)).applyHbs(app, {message: {}, logger: console})
 
-// router.get('/', (req, res) => {
-//     res.send('Hello')
-// })
-// app.use('/', router)
+module.exports = ({ port, openBrowser }) => {
+    const htmlResolver = async (req, res) => {
+        res.render(`index.hbs`)
+    }
 
-module.exports = ({port, openBrowser}) => {
+    app.use(express.static(path.resolve(__dirname, '..', '..', 'presentation-layer', 'public')));
+    app.use('/', htmlResolver)
+
     app.listen(port, () => {
         if (openBrowser) {
             open(`http://localhost:${port}`)
