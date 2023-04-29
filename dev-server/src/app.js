@@ -28,7 +28,8 @@ module.exports = ({ port, openBrowser }) => {
         res.render(`index.hbs`)
     }
 
-    app.use(express.static(path.resolve(__dirname, '..', '..', 'presentation-layer', 'public')));
+    const publicPath = path.resolve(__dirname, '..', '..', 'presentation-layer', 'public')
+    app.use(express.static(publicPath))
     app.use('/', htmlResolver)
 
     app.listen(port, () => {
